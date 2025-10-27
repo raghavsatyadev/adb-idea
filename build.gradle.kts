@@ -6,10 +6,10 @@ plugins {
     // Must match the Kotlin version bundled with the IDE
     // https://plugins.jetbrains.com/docs/intellij/using-kotlin.html#kotlin-standard-library
     // https://plugins.jetbrains.com/docs/intellij/android-studio-releases-list.html
-    id("org.jetbrains.kotlin.jvm") version "2.1.0"
+    id("org.jetbrains.kotlin.jvm") version "2.1.20"
 
     // https://github.com/JetBrains/intellij-platform-gradle-plugin
-    id("org.jetbrains.intellij.platform") version "2.4.0"
+    id("org.jetbrains.intellij.platform") version "2.10.2"
 
     // https://github.com/ajoberstar/reckon
     id("org.ajoberstar.reckon") version "0.14.0"
@@ -18,7 +18,7 @@ plugins {
     id("com.github.b3er.local.properties") version "1.1"
 
     // https://github.com/JetBrains/gradle-changelog-plugin
-    id("org.jetbrains.changelog") version "2.2.1"
+    id("org.jetbrains.changelog") version "2.4.0"
 
 }
 repositories {
@@ -31,7 +31,7 @@ repositories {
 intellijPlatform {
     pluginConfiguration {
         name = "adb_idea"
-        group = "com.developerphil.intellij.plugin.adbidea"
+        group = "io.github.raghavsatyadev"
         changeNotes.set(provider { recentChanges(HTML) })
         ideaVersion.sinceBuild.set(project.property("sinceBuild").toString())
         ideaVersion.untilBuild.set(provider { null })
@@ -41,7 +41,7 @@ intellijPlatform {
 }
 
 changelog {
-    repositoryUrl.set("https://github.com/pbreault/adb-idea")
+    repositoryUrl.set("https://github.com/raghavsatyadev/adb-idea")
     itemPrefix.set("-")
     keepUnreleasedSection.set(true)
     unreleasedTerm.set("[Unreleased]")
@@ -79,9 +79,10 @@ localIdePath?.let {
 dependencies {
     intellijPlatform {
         bundledPlugin("org.jetbrains.android")
-        instrumentationTools()
-        if (project.hasProperty("localIdeOverride")) {
-            local(property("localIdeOverride").toString())
+        if (project.hasProperty("localIdePath")) {
+            println(property("localIdePath"))
+            println(property("runLocalIde"))
+            local(property("localIdePath").toString())
         } else {
             androidStudio(property("ideVersion").toString())
         }

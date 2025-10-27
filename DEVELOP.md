@@ -19,8 +19,9 @@ Create new menu item
 
 * Add entry to plugin.xml inside actions tab (below line 100)
 ```xml
-<action id="com.developerphil.adbidea.action.NewAction"
-        class="com.developerphil.adbidea.action.NewAction"
+
+<action id="raghavsatyadev.github.io.adbidea.action.NewAction"
+        class="raghavsatyadev.github.io.adbidea.action.NewAction"
         text="New Action"
         description="Playing with the plugin">
 </action>
@@ -30,5 +31,5 @@ Create new menu item
 * Implement its abstract methods
 * Add new entry in `QuickListAction.kt` like this
 ```kotlin
-addAction("com.developerphil.adbidea.action.NewAction", group)
+addAction("raghavsatyadev.github.io.adbidea.action.NewAction", group)
 ```

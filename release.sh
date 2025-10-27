@@ -53,7 +53,5 @@ if [[ $? -ne 0 ]]; then
   exit 1
 else
   echo -e "\n\033[0;32mRelease uploaded successfully!\033[0m"
-  echo -e "\033[0;32mhttps://github.com/pbreault/adb-idea/releases/tag/${TAG}\033[0m"
+  echo -e "\033[0;32mhttps://github.com/raghavsatyadev/adb-idea/tags/${TAG}\033[0m"
 fi
-
-

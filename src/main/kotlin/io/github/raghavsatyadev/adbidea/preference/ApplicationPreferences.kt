@@ -4,7 +4,7 @@ import com.intellij.util.text.SemVer
 import io.github.raghavsatyadev.adbidea.preference.accessor.PreferenceAccessor
 import java.util.*
 
-private const val PREVIOUS_VERSION_PROPERTY = "raghavsatyadev.github.io.adbidea.previousversion"
+private const val PREVIOUS_VERSION_PROPERTY = "io.github.raghavsatyadev.adbidea.previousversion"
 
 class ApplicationPreferences(private val preferenceAccessor: PreferenceAccessor) {
 

@@ -2,7 +2,7 @@ package io.github.raghavsatyadev.adbidea.preference
 
 import io.github.raghavsatyadev.adbidea.preference.accessor.PreferenceAccessor
 
-private const val SELECTED_SERIALS_PROPERTY = "raghavsatyadev.github.io.adbidea.selecteddevices"
+private const val SELECTED_SERIALS_PROPERTY = "io.github.raghavsatyadev.adbidea.selecteddevices"
 
 class ProjectPreferences(private val preferenceAccessor: PreferenceAccessor) {
 

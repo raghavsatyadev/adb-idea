@@ -15,16 +15,16 @@ class QuickListAction : QuickSwitchSchemeAction(), DumbAware {
             return
         }
 
-        addAction("raghavsatyadev.github.io.adbidea.action.UninstallAction", group)
-        addAction("raghavsatyadev.github.io.adbidea.action.KillAction", group)
-        addAction("raghavsatyadev.github.io.adbidea.action.StartAction", group)
-        addAction("raghavsatyadev.github.io.adbidea.action.RestartAction", group)
-        addAction("raghavsatyadev.github.io.adbidea.action.ClearDataAction", group)
-        addAction("raghavsatyadev.github.io.adbidea.action.ClearDataAndRestartAction", group)
-        addAction("raghavsatyadev.github.io.adbidea.action.RevokePermissionsAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.UninstallAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.KillAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.StartAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.RestartAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.ClearDataAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.ClearDataAndRestartAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.RevokePermissionsAction", group)
         group.addSeparator()
-        addAction("raghavsatyadev.github.io.adbidea.action.StartWithDebuggerAction", group)
-        addAction("raghavsatyadev.github.io.adbidea.action.RestartWithDebuggerAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.StartWithDebuggerAction", group)
+        addAction("io.github.raghavsatyadev.adbidea.action.RestartWithDebuggerAction", group)
     }
 
 

@@ -1,4 +1,4 @@
-ADB Idea
+ADB Menu
 ========
 
 A plugin for Android Studio and Intellij IDEA that speeds up your day to day android development.
@@ -40,10 +40,10 @@ You can find every command in the following menu:
 Installation
 ========
 
-Download and install *ADB Idea* directly from Intellij / Android Studio:
+Download and install *ADB Menu* directly from Intellij / Android Studio:
 `Preferences/Settings->Plugins->Browse Repositories`
 
-Alternatively, you can [download the plugin](http://plugins.jetbrains.com/plugin/7380?pr=idea) from the jetbrains plugin site and install it manually in:
+Alternatively, you can [download the plugin](https://plugins.jetbrains.com/plugin/28868-adb-menu) from the jetbrains plugin site and install it manually in:
 `Preferences/Settings->Plugins->Install plugin from disk`
 
 License

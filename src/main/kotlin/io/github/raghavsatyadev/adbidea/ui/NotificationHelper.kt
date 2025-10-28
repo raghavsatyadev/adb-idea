@@ -11,7 +11,7 @@ object NotificationHelper {
             NotificationType.INFORMATION,
             NotificationGroupManager
                 .getInstance()
-                .getNotificationGroup("ADB Idea (Logging)")
+                .getNotificationGroup("ADB Menu (Logging)")
         )
     }
 
@@ -22,7 +22,7 @@ object NotificationHelper {
             NotificationType.ERROR,
             NotificationGroupManager
                 .getInstance()
-                .getNotificationGroup("ADB Idea (Errors)")
+                .getNotificationGroup("ADB Menu (Errors)")
         )
     }
 
@@ -34,7 +34,7 @@ object NotificationHelper {
     ) {
         // Create the notification without a listener
         val notification = notificationGroup.createNotification(
-            "ADB IDEA",
+            "ADB Menu",
             escapeString(message),
             notificationType,
         )

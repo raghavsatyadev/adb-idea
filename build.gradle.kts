@@ -80,13 +80,10 @@ dependencies {
     intellijPlatform {
         bundledPlugin("org.jetbrains.android")
         if (project.hasProperty("localIdePath")) {
-            println("localIdePath: ${property("localIdePath")}")
-            println("runLocalIde: ${property("runLocalIde")}")
             local(property("localIdePath").toString())
         } else {
             androidStudio(property("ideVersion").toString())
         }
-
     }
 
     implementation("org.jooq:joor:0.9.15")

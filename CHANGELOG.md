@@ -2,6 +2,10 @@
 
 ## [[Unreleased]]
 
+## [1.7.0] - 2025-10-29
+
+- Compatibility with AS Otter Feature Drop 2 2025.2.2.1
+
 ## [1.6.19] - 2024-11-17
 - Compatibility with AS Ladybug Feature Drop 2024.2.2
 

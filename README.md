@@ -1,3 +1,5 @@
+Full Credit for the plugin development goes to [Philippe Breault](https://github.com/pbreault). I have only made this plugin because previous one was not maintained anymore.
+
 ADB Menu
 ========
 

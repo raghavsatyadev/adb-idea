@@ -10,6 +10,6 @@ object ShellCommandsFactory {
 
     fun startComponent(componentName: String, attachDebugger: Boolean): String {
         val debugFlag = if (attachDebugger) "-D " else ""
-        return "am start $debugFlag -n $componentName"
+        return "am start $debugFlag -n $componentName -a android.intent.action.MAIN"
     }
 }

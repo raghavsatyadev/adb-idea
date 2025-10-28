@@ -30,7 +30,7 @@ repositories {
 
 intellijPlatform {
     pluginConfiguration {
-        name = "ADB IDEA"
+        name = "ADB Menu"
         group = "io.github.raghavsatyadev"
         changeNotes.set(provider { recentChanges(HTML) })
         ideaVersion.sinceBuild.set(project.property("sinceBuild").toString())

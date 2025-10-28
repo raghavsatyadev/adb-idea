@@ -1,13 +1,13 @@
 <idea-plugin url="https://github.com/raghavsatyadev/adb-idea">
     <id>io.github.raghavsatyadev.adbidea</id>
-    <name>ADB Idea</name>
+    <name>ADB Menu</name>
     <vendor url="https://github.com/raghavsatyadev">Raghav Satyadev</vendor>
     <extensions defaultExtensionNs="com.intellij">
         <!-- Notification group for logging -->
-        <notificationGroup displayType="NONE" id="ADB Idea (Logging)" isLogByDefault="true" />
+        <notificationGroup displayType="NONE" id="ADB Menu (Logging)" isLogByDefault="true"/>
 
         <!-- Notification group for errors -->
-        <notificationGroup displayType="BALLOON" id="ADB Idea (Errors)" isLogByDefault="true" />
+        <notificationGroup displayType="BALLOON" id="ADB Menu (Errors)" isLogByDefault="true"/>
     </extensions>
     <description><![CDATA[
         Adds the following ADB commands to Android Studio and Intellij:<br />
@@ -37,7 +37,7 @@
     <depends>org.jetbrains.android</depends>
 
     <actions>
-        <group description="ADB Idea" id="AdbIdea" popup="true" text="_ADB Idea">
+        <group description="ADB Menu" id="AdbMenu" popup="true" text="_ADB Idea">
             <action class="io.github.raghavsatyadev.adbidea.action.QuickListAction"
                     description="List all the adb idea operations in a popup"
                     id="io.github.raghavsatyadev.adbidea.action.AdbIdeaQuickList"

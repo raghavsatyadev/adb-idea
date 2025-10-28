@@ -1,26 +1,27 @@
 package io.github.raghavsatyadev.adbidea.adb.command
 
 import com.android.ddmlib.IDevice
+import com.android.ddmlib.IShellOutputReceiver
 import com.android.ddmlib.MultiLineReceiver
 import com.android.tools.idea.run.activity.ActivityLocator.ActivityLocatorException
-import com.android.tools.idea.run.activity.DefaultActivityLocator
 import com.google.common.base.Joiner
 import com.google.common.base.Strings
-import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.util.ThrowableComputable
-import io.github.raghavsatyadev.adbidea.adb.ShellCommandsFactory.startActivity
+import io.github.raghavsatyadev.adbidea.adb.ShellCommandsFactory.startComponent
 import io.github.raghavsatyadev.adbidea.debugger.Debugger
 import io.github.raghavsatyadev.adbidea.ui.NotificationHelper.error
 import io.github.raghavsatyadev.adbidea.ui.NotificationHelper.info
-import org.jetbrains.android.facet.AndroidFacet
 import java.util.concurrent.TimeUnit
 
 class StartDefaultActivityCommand(private val withDebugger: Boolean) : Command {
     override fun run(context: CommandContext): Boolean = with(context) {
         try {
-            val activityName = getDefaultActivityName(facet, device)
+            val component = device.resolveLauncherComponent(packageName, tvDevice = false)
+            if (component.isNullOrEmpty()) {
+                error("Start fail... " + "Activity not found")
+                return false
+            }
             val receiver = StartActivityReceiver()
-            val shellCommand = startActivity(packageName, activityName, withDebugger)
+            val shellCommand = startComponent(component, withDebugger)
             device.executeShellCommand(shellCommand, receiver, 15L, TimeUnit.SECONDS)
             if (withDebugger) {
                 Debugger(project, device, packageName, coroutineScope).attach()
@@ -45,13 +46,43 @@ class StartDefaultActivityCommand(private val withDebugger: Boolean) : Command {
     }
 
     @Throws(ActivityLocatorException::class)
-    private fun getDefaultActivityName(facet: AndroidFacet, device: IDevice): String {
-        return ApplicationManager.getApplication()
-            .runReadAction(ThrowableComputable<String, ActivityLocatorException?> {
-                DefaultActivityLocator(facet).getQualifiedActivityName(
-                    device
-                )
-            })
+    private fun getDefaultActivityName(packageName: String, device: IDevice): String? {
+        return device.resolveLauncherComponent(packageName, tvDevice = false)
+    }
+
+    fun IDevice.resolveLauncherComponent(
+        pkg: String,
+        tvDevice: Boolean
+    ): String? {
+        val category = if (tvDevice)
+            "android.intent.category.LEANBACK_LAUNCHER"
+        else
+            "android.intent.category.LAUNCHER"
+
+        val cmd = """
+        cmd package resolve-activity \
+        -a android.intent.action.MAIN \
+        -c $category \
+        --brief $pkg
+    """.trimIndent()
+
+        val out = StringBuilder()
+        executeShellCommand(cmd, object : IShellOutputReceiver {
+            override fun addOutput(data: ByteArray?, offset: Int, length: Int) {
+                data?.let { out.append(String(it)) }
+            }
+
+            override fun flush() {
+            }
+
+            override fun isCancelled(): Boolean {
+                return false
+            }
+
+        })
+        // Typical output: "com.example/.MainActivity"
+        val line = out.lines().firstOrNull { it.contains('/') } ?: return null
+        return line.trim()
     }
 
     class StartActivityReceiver : MultiLineReceiver() {
